@@ -1,0 +1,8 @@
+.container-wrapper {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    margin-bottom: 0;
+}
