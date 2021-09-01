@@ -12,8 +12,6 @@ $(document).ready(function(){
     $(window).on("load", function() {
         $("video").fadeOut("slow");
     })
-    //for nav dropdown
-    // $(".dropdown-trigger").dropdown();
 
     //Movie API call for poster images
     const posterPromise = fetch(`https://api.themoviedb.org/3/search/movie?api_key=${movieKey}&query=IT`)
@@ -24,17 +22,42 @@ $(document).ready(function(){
         });
 
     //add movie
-    const addMovie = fetch(API_URL, {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify( {
-            title: "",
-            rating: "",
-            year: ""
+    $("#submit-btn").on('click', (e) => {
+        e.preventDefault();
+        let newMovie = {
+            title: $("#title_inline").val(),
+            rating: $("#rating_inline").val(),
+            year: $("#year_inline").val()
+        }
+        let postMovie = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newMovie)
+        };
+       return fetch(API_URL, postMovie)
+           .then(getMovies)
+           .catch(console.error)
+    });
+
+
+  //delete movie
+   function removeMovie(id) {
+        fetch(`${API_URL}/${id}`, {
+            method: 'DELETE',
         })
+         .then(result => console.log(result))
+    }
+
+    $(document).on("click", '.btn-floating', (e) => {
+        e.preventDefault();
+        let id = $(e.currentTarget).attr("id")
+       removeMovie(id)
     })
+
+
+
 
     // Movie API call
     const moviePromise = fetch(API_URL)
@@ -49,7 +72,6 @@ $(document).ready(function(){
     //Render Movies function
     function getMovies(movies) {
         let html = ''
-
             console.log(movies);
         movies.forEach(movie => {
             //let moviePoster = movie.poster
@@ -59,13 +81,14 @@ $(document).ready(function(){
                   </div>
                   <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">${movie.title}<i class="material-icons right">more_vert</i></span>
-                    <p>Rating: ${movie.rating}</p>
-                     <i class="material-icons"><a href="#">do_not_disturb_on</a></i>
+                    <p>Rating: ${movie.rating}</p>                     
+<!--                        <a class="waves-effect waves-teal btn-flat">Remove</a>                                    -->
+                     <a class="btn-floating btn-medium waves-effect waves-light red" id="${movie.id}"><i class="material-icons">do_not_disturb_on</i></a> 
                   </div>
                   <div class="card-reveal">
                     <span class="card-title grey-text text-darken-4">Actors: ${movie.actors}<i class="material-icons right">close</i></span>
                     <p>Plot: ${movie.plot}</p>
-                    <p>Year: ${movie.year}</p>
+                    <p>Year: ${movie.year}</p>           
                   </div>
                 </div> `
         })
