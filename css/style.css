@@ -1,11 +1,15 @@
 body {
     background-color: #263238;
 }
-.container-wrapper {
-    height: 75%;
-    width: 100%;
-    justify-content: center;
-    left: 0;
-    right: 0;
-    margin-bottom: 0;
+/*.container-wrapper {*/
+/*    height: 55%;*/
+/*    width: 50%;*/
+/*    justify-content: center;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    margin-bottom: 0;*/
+/*}*/
+
+.custom-hide {
+    display: none;
 }
