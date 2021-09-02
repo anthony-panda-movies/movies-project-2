@@ -6,6 +6,7 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
@@ -21,41 +22,39 @@
 
           <div class="nav-content">
                 <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal fixed-action-btn">
-                  <i class="material-icons">add</i>
+                  <i class="material-icons important">add</i>
                 </a>
-              <div class="input-field inline ">
-                  <input id="title_inline" type="text" class="validate">
-                  <label for="title_inline">Title</label>
-
-                  <div class="input-field ">
+                 <div class="input-field  toggle custom-hide" >
+                      <input id="title_inline" type="text" class="validate">
+                      <label for="title_inline" class="white-text">Title</label>
+                 </div>
+                  <div class="input-field toggle custom-hide">
                       <input id="rating_inline" type="text" class="validate">
-                      <label for="rating_inline">Rating</label>
-
-                  <div class="input-field ">
+                      <label for="rating_inline" class="white-text">Rating</label>
+                  </div>
+                  <div class="input-field toggle custom-hide">
                       <input id="year_inline" type="text" class="validate">
-                      <label for="year_inline">Year</label>
+                      <label for="year_inline" class="white-text">Year</label>
                       <a class="waves-effect waves-light btn" id="submit-btn">Submit</a>
                   </div>
-                </div>
-              </div>
             </div>
          </div>
       </div>
     </nav>
 <!--image for loading page-->
-<div class="container-wrapper">
-<video autoplay muted loop>
-  <source src="img/popcorn.mp4" type="video/mp4">
-</video>
+<div class="container-wrapper" id="video">
+    <video autoplay muted loop>
+      <source src="img/popcorn.mp4" type="video/mp4">
+    </video>
 </div>
 
 <!--movie cards-->
-<div class="container">
-<div class="row">
-  <div id="movie" class="col s6">
+
+
+  <div id="movie" class="row container">
   </div>
-</div>
-</div>
+
+
 
 <!--do_not_disturb_on-->
 
